@@ -24,4 +24,5 @@
 
 + 운영체제: Windows 10
 + 개발 언어: Java 17
++ 서버: Tomcat 9
 + 개발 환경: Eclipse
