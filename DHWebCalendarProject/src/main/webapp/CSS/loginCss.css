@@ -1,0 +1,14 @@
+@charset "UTF-8";
+
+.fieldset_css {
+	width:300px;
+	position:absolute;
+	top:20%;
+	left:30%;
+}
+
+.bold_font {
+	font-family: sans-serif;
+	font-size: 25px;
+	font-weight: bold;
+}
