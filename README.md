@@ -1,5 +1,16 @@
 # 20221-WebProgramming
 
+# 4주차
++ 회원가입 페이지 UI 수정
+
+![image](https://user-images.githubusercontent.com/95271528/161426639-32361b03-739f-464a-a024-452ee26a7e5c.png)
++ 회원가입 데이터 유효성 검사 추가
+  + ID: 정규식 이용, 영문 대/소문자와 숫자만 가능, 4~20자리
+  + PW: 정규식 이용, 영문 대/소문자와 숫자, 특수기호 1개 이상, 8~16자리
+  + 등 모든 입력란에 유효성 검사, 공백 검사 추가
+
+![image](https://user-images.githubusercontent.com/95271528/161426825-f18c3a42-8621-445f-92da-62a0eb6d8345.png)![image](https://user-images.githubusercontent.com/95271528/161426877-326e3eb9-0526-4a9e-8d0d-450213a121bb.png)
+
 # 3주차
 ![image](https://user-images.githubusercontent.com/95271528/160287984-b686eaeb-43e6-455e-8517-c302d3a8aa55.png)
 + 로그인 페이지에서 회원가입 페이지로 넘어가는 기능 구현
