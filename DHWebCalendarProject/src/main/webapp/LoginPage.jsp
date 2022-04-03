@@ -8,7 +8,7 @@
 	<link rel="stylesheet" href="/CSS/loginCss.css">
 </head>
 <body>
-	<form action="#" method="post" name="login_form">
+	<form action="#" method="post" name="loginForm">
 	<fieldset class="fieldset_css">
 		<legend class="bold_font">로그인</legend>
 		ID<br>
