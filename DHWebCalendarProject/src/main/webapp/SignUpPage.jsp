@@ -12,7 +12,7 @@
 			
 			var regExpId = /^[a-zA-Z0-9]{4,20}$/;
 			var regExpPw = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,16}$/;
-			var regExpNick = /^[\w\Wㄱ-ㅎㅏ-ㅣ가-힣]{3,15}$/;
+			var regExpNick = /^[a-zA-Z0-9ㄱ-ㅎㅏ-ㅣ가-힣]{3,15}$/;
 			
 			if (!regExpId.test(f.userID.value))
 			{
