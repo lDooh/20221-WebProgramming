@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="EUC-KR">
+	<meta charset="UTF-8">
 	<title>DH 캘린더 회원가입</title>
 	<link rel="stylesheet" href="/CSS/loginCss.css">
 	<script type="text/javascript">

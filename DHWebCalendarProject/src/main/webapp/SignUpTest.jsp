@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>회원가입 테스트</title>
 </head>
 <body>
@@ -20,6 +20,9 @@
 		String phone2 = request.getParameter("phone2");
 		String phone3 = request.getParameter("phone3");
 	%>
+	
+	
+	
 	<p>아이디: <%= id %>
 	<p>비밀번호: <%= pw %>
 	<p>닉네임: <%= nick %>
