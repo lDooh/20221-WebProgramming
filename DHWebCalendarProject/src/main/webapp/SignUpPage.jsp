@@ -59,8 +59,9 @@
 				f.mobileCarrier.focus();
 				return false;
 			}
-			if (isNaN(f.phone1.value) || isNaN(f.phone2.value) || isNaN(f.phone3.value) ||
-					(f.phone1.value.length != 3) || (f.phone2.value.length != 4) || (f.phone3.value.length != 4))
+			if (!/^[0-9]{3}$/.test(f.phone1.value) || 
+					!/^[0-9]{4}$/.test(f.phone2.value) || 
+					!/^[0-9]{4}$/.test(f.phone3.value))
 			{
 				alert("올바른 번호를 입력해 주세요.");
 				f.phone1.focus();
