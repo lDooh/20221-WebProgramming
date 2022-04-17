@@ -1,5 +1,14 @@
 # 20221-WebProgramming
 
+# 5주차
+![image](https://user-images.githubusercontent.com/95271528/163716410-c0f1f770-7516-4562-96a8-7c4420cf8441.png)
++ 로그인 화면에서 입력한 id가 "imsiid" pw가 "qwer1234!" 인 경우에만 세션 생성
+  + 추후 DB 연동 후 수정 예정
++ 메인 페이지에서 `session.getAttribute("memberId");`를 이용해 사용자의 id 정보 가져오기
++ 세션 유지 시간은 15분으로 설정
++ 로그아웃 버튼을 누르면 세션의 정보 파기, 로그인 화면으로 되돌아간다.
+  + 로그아웃을 하고 메인 페이지를 들어가면 id 정보가 null로 나온다.
+
 # 4주차
 + 회원가입 페이지 UI 수정
 
