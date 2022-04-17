@@ -20,6 +20,7 @@
 			session.setMaxInactiveInterval(60 * 15);	// 세션 유효시간 15분 설정
 			
 			out.println("세션 생성<br>");
+			response.sendRedirect("MainPage.jsp");
 		}
 		else
 		{

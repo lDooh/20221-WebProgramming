@@ -20,8 +20,21 @@
 
 div.info {
 	border: 2px solid #FFFFAA;
-	width: 300px;
+	width: 200px;
 	height: 200px;
 	position: relative;
 	top: 100px;
+	left: 10px;
 }
+
+p.nick {
+	border: 2px solid #000000;
+	position: absolute;
+	text-align: center;
+	padding: 5px;
+	left: 0;
+	right: 0;
+	margin-left: auto;
+	margin-right: auto;
+}
+

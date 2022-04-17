@@ -13,7 +13,13 @@
 		String u_pw = (String)session.getAttribute("memberPw");
 	%>
 	<div class="info">
-		<!--  TODO: 유저 정보, 세션 유지 시간(실시간), 로그아웃 버튼 -->
+		<div>
+			<p>회원정보</p>
+			<p><%= u_id %></p>
+		</div>
+		<form method="post" action="LogoutSession.jsp">
+			<input type="submit" value="로그아웃" onClick="logoutFunc()">
+		</form>
 	</div>
 </body>
 </html>
