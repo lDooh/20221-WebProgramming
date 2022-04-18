@@ -18,7 +18,7 @@
 			<p><%= u_id %></p>
 		</div>
 		<form method="post" action="LogoutSession.jsp">
-			<input type="submit" value="로그아웃" onClick="logoutFunc()">
+			<input type="submit" value="로그아웃">
 		</form>
 	</div>
 </body>
