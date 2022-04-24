@@ -27,6 +27,19 @@ div.info {
 	left: 10px;
 }
 
+div.cal {
+	border: 2px solid #FFFFAA;
+	width: 800px;
+	height: 800px;
+	position: relative;
+	top: 1px;
+	left: 500px;
+}
+
+.calBorder {
+	border: 1px solid black;
+}
+
 p.nick {
 	border: 2px solid #000000;
 	position: absolute;
