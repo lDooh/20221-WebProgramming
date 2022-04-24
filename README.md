@@ -1,5 +1,9 @@
 # 20221-WebProgramming
 
+# 6주차
+![image](https://user-images.githubusercontent.com/95271528/164986358-cb4722c8-6361-4107-8f13-0ce50d5f3a8e.png)
++ `java.time.LocalDate` 클래스를 이용하여 현재 날짜를 구하고, 메인 화면에 달력 출력하는 코드 작성
+
 # 5주차
 ![image](https://user-images.githubusercontent.com/95271528/163716410-c0f1f770-7516-4562-96a8-7c4420cf8441.png)
 + 로그인 화면에서 입력한 id가 "imsiid" pw가 "qwer1234!" 인 경우에만 세션 생성
