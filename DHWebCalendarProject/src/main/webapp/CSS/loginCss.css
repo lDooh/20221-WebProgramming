@@ -30,7 +30,7 @@ div.info {
 div.cal {
 	border: 2px solid #FFFFAA;
 	width: 800px;
-	height: 800px;
+	height: 500px;
 	position: relative;
 	top: 1px;
 	left: 500px;
@@ -51,3 +51,10 @@ p.nick {
 	margin-right: auto;
 }
 
+div.addSche {
+	position: absolute;
+	left: 40%;
+	top: 40%;
+	padding: 5px;
+	tranform: translate(-50%, -50%);
+}

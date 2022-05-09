@@ -50,7 +50,7 @@
 				int sDow = now.getDayOfWeek().getValue();
 				
 				// 1일 위치 맞추기
-				for (int i = 0; i < sDow; i++)
+				for (int i = 0; i < sDow % 7; i++)
 				{
 					out.print("<td class='calBorder'></td>");
 				}
@@ -70,6 +70,8 @@
 			%>
 			</tr>
 		</table>
+
+		<input type="button" value="일정 추가" onclick="location.href='addSchedule.jsp'">		
 	</div>
 </body>
 </html>
