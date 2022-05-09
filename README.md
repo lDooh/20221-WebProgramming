@@ -1,5 +1,12 @@
 # 20221-WebProgramming
 
+# 8주차
+![image](https://user-images.githubusercontent.com/95271528/167437723-99413cda-f5dd-4193-87b2-ad65972c73ca.png)
++ 메인 화면에서 일정 추가화면으로 이동
+
+# 7주차
++ 중간고사
+
 # 6주차
 ![image](https://user-images.githubusercontent.com/95271528/164986358-cb4722c8-6361-4107-8f13-0ce50d5f3a8e.png)
 + `java.time.LocalDate` 클래스를 이용하여 현재 날짜를 구하고, 메인 화면에 달력 출력하는 코드 작성
