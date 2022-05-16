@@ -1,8 +1,8 @@
 # 20221-WebProgramming
 
 # 9주차
-![image](https://user-images.githubusercontent.com/95271528/168480759-d6a27b32-d7a4-4990-8c53-621354f01c12.png)
-![image](https://user-images.githubusercontent.com/95271528/168480858-fb3e41c5-389c-440d-856f-f3837d142758.png)
+![image](https://user-images.githubusercontent.com/95271528/168513182-e76f2ce3-f1fa-4523-934b-d37843b7cf0d.png)
+![image](https://user-images.githubusercontent.com/95271528/168513392-03f9c1e6-6307-4d1c-a59b-b70f04b494b5.png)
 + DB 테이블 설계
 + DAO, VO 클래스 구현 중
 
