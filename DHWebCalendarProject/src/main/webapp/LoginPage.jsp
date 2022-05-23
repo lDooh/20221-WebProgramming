@@ -26,8 +26,6 @@
 				f.userPW.focus();
 				return false;
 			}
-			
-			// TODO: DB 연동 후 로그인 기능 구현
 		}
 	</script>
 </head>

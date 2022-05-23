@@ -6,11 +6,11 @@ public class UserDTO {
 	private String id;
 	private String password;
 	private String nickname;
-	private LocalDate bd;
-	private char gender;
+	private String bd;
+	private String gender;
 	private String callNum;
 	
-	public UserDTO(String id, String password, String nickname, LocalDate bd, char gender, String callNum) {
+	public UserDTO(String id, String password, String nickname, String bd, String gender, String callNum) {
 		this.id = id;
 		this.password = password;
 		this.nickname = nickname;
@@ -43,19 +43,23 @@ public class UserDTO {
 		this.nickname = nickname;
 	}
 	
-	public LocalDate getbd() {
-		return bd;
+	public String getbd() {
+		String[] str = bd.split("-");
+		LocalDate ld = LocalDate.of(Integer.parseInt(str[0])
+				, Integer.parseInt(str[1]), Integer.parseInt(str[2]));
+		
+		return ld.toString();
 	}
 	
-	public void setbd(LocalDate bd) {
+	public void setbd(String bd) {
 		this.bd = bd;
 	}
 	
-	public char getGender() {
+	public String getGender() {
 		return gender;
 	}
 	
-	public void setGender(char gender) {
+	public void setGender(String gender) {
 		this.gender = gender;
 	}
 	

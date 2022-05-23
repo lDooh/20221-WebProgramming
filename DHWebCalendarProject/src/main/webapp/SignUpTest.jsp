@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="DTO.UserDTO" %>
+<%@ page import="DAO.UserDAO" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,9 +21,22 @@
 		String phone1 = request.getParameter("phone1");
 		String phone2 = request.getParameter("phone2");
 		String phone3 = request.getParameter("phone3");
+		
+		String path = System.getProperty("user.dir") + "/local.properties";
+		//out.println(path);
+		
+		StringBuffer bd = new StringBuffer(birth);
+		bd.insert(4, "-");
+		bd.insert(7, "-");
+		if (gender.equals("남자"))
+			gender = "m";
+		else
+			gender = "f";
+		
+		UserDTO userDTO = new UserDTO(id, pw, nick, bd.toString(), gender, phone1 + phone2 + phone3);
+		UserDAO userDAO = UserDAO.getInstance();
+		userDAO.signUp(userDTO);
 	%>
-	
-	
 	
 	<p>아이디: <%= id %>
 	<p>비밀번호: <%= pw %>

@@ -40,7 +40,7 @@
 				return false;
 			}
 			
-			if (isNaN(f.userBirth.value) || (f.userBirth.value.length != 6))
+			if (isNaN(f.userBirth.value) || (f.userBirth.value.length != 8))
 			{
 				alert("6자리 숫자로 생년월일을 입력해 주세요.");
 				f.userBirth.focus();
@@ -83,7 +83,7 @@
 		닉네임<br>
 		<input type="text" name="userNick"><br>
 		생년월일<br>
-		<input type="text" name="userBirth" placeholder="6자리 숫자 입력"><br>
+		<input type="text" name="userBirth" placeholder="8자리 숫자 입력"><br>
 		성별<br>
 		<input type="radio" name="userGender" value="남자">남자
 		<input type="radio" name="userGender" value="여자">여자<br>
