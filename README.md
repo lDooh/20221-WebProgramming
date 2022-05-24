@@ -1,5 +1,9 @@
 # 20221-WebProgramming
 
+# 10주차
++ 회원가입 시 데이터베이스에 회원 정보 등록
++ 관리자 화면에서 회원 목록 열람, 회원 삭제 기능
+
 # 9주차
 ![image](https://user-images.githubusercontent.com/95271528/168513182-e76f2ce3-f1fa-4523-934b-d37843b7cf0d.png)
 ![image](https://user-images.githubusercontent.com/95271528/168513392-03f9c1e6-6307-4d1c-a59b-b70f04b494b5.png)
