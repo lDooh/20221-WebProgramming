@@ -25,7 +25,18 @@
 			session.setMaxInactiveInterval(60 * 15);	// 세션 유효시간 15분 설정
 			
 			out.println("세션 생성<br>");
-			response.sendRedirect("MainPage.jsp");
+			//response.sendRedirect("MainPage.jsp");
+			response.sendRedirect("ShowUsers.jsp");
+		}
+		else if (i == 0)
+		{
+			out.println("<script>alert('비밀번호 틀림');</script>");
+			out.print("<script>location.href='LoginPage.jsp';</script>");
+		}
+		else if (i == -1)
+		{
+			out.println("<script>alert('없는 ID');</script>");
+			out.print("<script>location.href='LoginPage.jsp';</script>");
 		}
 		else
 		{

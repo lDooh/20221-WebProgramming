@@ -16,6 +16,13 @@
 	</script>
 </head>
 <body>
+	<%
+		String id = (String)session.getAttribute("memberId");
+		
+		if (id == null)
+			out.print("<script>location.href='LoginPage.jsp';</script>");
+	%>
+	
 	<table border="1">
 		<tr>
 			<th>id</th>
@@ -44,5 +51,7 @@
 			}
 		%>
 	</table>
+	<br>
+	<input type="button" value="로그아웃" onClick="location.href='LogoutSession.jsp'">
 </body>
 </html>

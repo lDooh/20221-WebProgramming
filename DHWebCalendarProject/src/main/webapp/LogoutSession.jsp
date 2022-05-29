@@ -9,7 +9,13 @@
 <body>
 	<%
 		session.invalidate();
-		response.sendRedirect("LoginPage.jsp");
+	%>
+	<script>
+		alert("로그아웃 되었습니다.");
+	</script>
+	<%
+		//response.sendRedirect("LoginPage.jsp");
+	out.print("<script>location.href='LoginPage.jsp';</script>");
 	%>
 </body>
 </html>

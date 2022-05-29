@@ -4,9 +4,7 @@ import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
-
 import DTO.UserDTO;
-
 import java.sql.*;
 
 public class UserDAO {
@@ -101,7 +99,7 @@ public class UserDAO {
 		
 		if (count == 1)
 		{
-			System.out.println("회원 가입 성공");
+			//System.out.println("회원 가입 성공");
 			return true;
 		}
 		
@@ -120,8 +118,6 @@ public class UserDAO {
 			
 			if (resultSet.next())
 			{
-				System.out.println("입력 PW: " + resultSet.getString("password"));
-				System.out.println("원래 PW: " + password);
 				if (resultSet.getString("password").equals(password))
 					return 1;
 				else
@@ -129,7 +125,7 @@ public class UserDAO {
 			}
 			else
 			{
-				System.out.println("없는 ID");
+				//System.out.println("없는 ID");
 				return -1;
 			}
 		} catch (SQLException e) {
