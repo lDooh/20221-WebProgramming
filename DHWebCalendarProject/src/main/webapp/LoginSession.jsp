@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="DAO.UserDAO" %>
+<%@ page import="DTO.UserDTO" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,6 +10,7 @@
 </head>
 <body>
 	<%
+		request.setCharacterEncoding("UTF-8");
 		String u_id = request.getParameter("userID");
 		String u_pw = request.getParameter("userPW");
 		
@@ -19,14 +21,20 @@
 		
 		if (i == 1)
 		{
+			UserDTO userDTO = userDAO.getUserDTO(u_id);
+			
+			// 세션에 ID 정보 저장
 			session.setAttribute("memberId", u_id);
-			session.setAttribute("memberPw", u_pw);
+			session.setAttribute("nickname", userDTO.getNickname());
 			
 			session.setMaxInactiveInterval(60 * 15);	// 세션 유효시간 15분 설정
 			
 			out.println("세션 생성<br>");
-			//response.sendRedirect("MainPage.jsp");
-			response.sendRedirect("ShowUsers.jsp");
+			
+			if (userDTO.getManager())
+				response.sendRedirect("ShowUsers.jsp");
+			else
+				response.sendRedirect("MainPage.jsp");
 		}
 		else if (i == 0)
 		{

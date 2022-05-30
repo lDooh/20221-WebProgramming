@@ -2,40 +2,26 @@
     pageEncoding="UTF-8"%>
 <%@ page import="DAO.UserDAO" %>
 <%@ page import="DTO.UserDTO" %>
-<%@ page import="java.sql.ResultSet" %>
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>회원 목록</title>
+	<title>유저 검색</title>
 </head>
 <body>
 	<%
-		String id = (String)session.getAttribute("memberId");
+		request.setCharacterEncoding("UTF-8");
+		String u_nick = request.getParameter("searchNick");
 		UserDAO userDAO = UserDAO.getInstance();
-		UserDTO[] userDTO = userDAO.getUsers();
-		
-		if (id == null)
-			out.print("<script>location.href='LoginPage.jsp';</script>");
-		else
-			if (!userDAO.getUserDTO(id).getManager())
-				out.print("<script>location.href='MainPage.jsp';</script>");
+		UserDTO[] userDTO = userDAO.getUsersByNick(u_nick);
 	%>
 	
-	<table border="1">
-		<tr>
-			<th>id</th>
-			<th>password</th>
-			<th>nickname</th>
-			<th>birthDay</th>
-			<th>gender</th>
-			<th>callNum</th>
-			<th>manager</th>
-			<th>수정</th>
-			<th>삭제</th>
-		</tr>
+	
 		<%
-			if (userDTO != null)
+			if (userDTO != null && userDTO.length != 0)
+			{
+				out.print("<table border='1'><tr><th>id</th><th>password</th><th>nickname</th><th>birthDay</th><th>gender</th><th>callNum</th><th>manager</th><th>수정</th><th>삭제</th></tr>");
+				
 				for (int i = 0; i < userDTO.length; i++)
 				{
 					out.print("<tr><td id=uid" + i + ">");
@@ -50,14 +36,11 @@
 							+ "<a href=DeleteUser.jsp?deleteID=" + userDTO[i].getId() + ">X</a>");
 					out.print("</td></tr>");
 				}
+				
+				out.print("</table");
+			}
+			else
+				out.println("<script>document.write('유저가 존재하지 않습니다.')</script");
 		%>
-	</table>
-	<br>
-	<form action="SearchUser.jsp" method="post" name="searchForm">
-		<input type="text" name="searchNick">&nbsp;
-		<input type="submit" value="검색"> 
-	</form>
-	<br>
-	<input type="button" value="로그아웃" onClick="location.href='LogoutSession.jsp'">
 </body>
 </html>

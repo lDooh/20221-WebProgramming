@@ -8,6 +8,7 @@
 </head>
 <body>
 	<%
+		request.setCharacterEncoding("UTF-8");
 		session.invalidate();
 	%>
 	<script>

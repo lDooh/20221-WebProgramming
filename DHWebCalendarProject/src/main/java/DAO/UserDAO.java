@@ -75,7 +75,7 @@ public class UserDAO {
 	}
 	
 	public boolean signUp(UserDTO userDTO) {
-		String sql = "INSERT INTO userinfo VALUES (?, ?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO userinfo VALUES (?, ?, ?, ?, ?, ?, DEFAULT)";
 		int count = 0;
 		
 		connect();
@@ -162,6 +162,7 @@ public class UserDAO {
 										resultSet.getString("birthday"),
 										resultSet.getString("gender"),
 										resultSet.getString("callNum"));
+				tmpUserDTO.setManager(resultSet.getBoolean("manager"));
 				userDTO[i] = tmpUserDTO;
 				resultSet.next();
 			}
@@ -173,6 +174,101 @@ public class UserDAO {
 		}
 		
 		return userDTO;
+	}
+	
+	public UserDTO getUserDTO(String id) {
+		UserDTO userDTO;
+		String sql = "SELECT * FROM userinfo WHERE id = '" + id + "'";
+		
+		connect();
+		
+		try {
+			statement = connection.prepareStatement(sql);
+			resultSet = statement.executeQuery(sql);
+			
+			resultSet.next();
+			userDTO = new UserDTO(resultSet.getString("id"),
+					resultSet.getString("password"),
+					resultSet.getString("nickname"),
+					resultSet.getString("birthday"),
+					resultSet.getString("gender"),
+					resultSet.getString("callNum"));
+			userDTO.setManager(resultSet.getBoolean("manager"));
+			
+			return userDTO;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			connectionClose();
+		}
+		
+		return null;
+	}
+	
+	public UserDTO[] getUsersByNick(String nick) {
+		String sql = "SELECT * FROM userinfo WHERE id LIKE '%" + nick + "%';";
+		UserDTO[] userDTO = null;
+		
+		connect();
+		
+		try {
+			statement = connection.prepareStatement("SELECT count(id) FROM userinfo WHERE id LIKE '%" + nick + "%';");
+			resultSet = statement.executeQuery("SELECT count(id) FROM userinfo WHERE id LIKE '%" + nick + "%';");
+			resultSet.next();
+			int rows = Integer.parseInt(resultSet.getString("count(id)"));
+			userDTO = new UserDTO[rows];
+			
+			statement = connection.prepareStatement(sql);
+			resultSet = statement.executeQuery(sql);
+			
+			UserDTO tmpUserDTO = null;
+			resultSet.next();
+			for (int i = 0; i < rows; i++)
+			{
+				System.out.println(i);
+				tmpUserDTO = new UserDTO(resultSet.getString("id"),
+										resultSet.getString("password"),
+										resultSet.getString("nickname"),
+										resultSet.getString("birthday"),
+										resultSet.getString("gender"),
+										resultSet.getString("callNum"));
+				tmpUserDTO.setManager(resultSet.getBoolean("manager"));
+				userDTO[i] = tmpUserDTO;
+				resultSet.next();
+			}
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		} finally {
+			connectionClose();
+		}
+		
+		return userDTO;
+	}
+	
+	public void modifyUser(UserDTO userDTO) {
+		String sql = "UPDATE userinfo SET password = ?, nickname = ?, birthday = ?, manager = ? WHERE id = ?";
+		
+		connect();
+		String bd = userDTO.getbd().substring(0, 4) + "-"
+				+ userDTO.getbd().substring(4, 6) + "-"
+				+ userDTO.getbd().substring(6, 8) + "-";
+
+		try {
+			statement = connection.prepareStatement(sql);
+			statement.setString(1, userDTO.getPassword());
+			statement.setString(2, userDTO.getNickname());
+			statement.setString(3, bd);
+			statement.setBoolean(4, userDTO.getManager());
+			statement.setString(5, userDTO.getId());
+			
+			statement.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			connectionClose();
+		}
 	}
 	
 	public void deleteUser(String id) {

@@ -7,6 +7,9 @@
 	<title>유저 삭제</title>
 </head>
 <body>
-
+	<%
+		String deleteID = request.getParameter("deleteID");
+		out.println(deleteID);
+	%>
 </body>
 </html>

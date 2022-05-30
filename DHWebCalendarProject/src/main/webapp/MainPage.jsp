@@ -11,19 +11,18 @@
 <body>
 	<%
 		String u_id = (String)session.getAttribute("memberId");
-		String u_pw = (String)session.getAttribute("memberPw");
+		String u_nickname = (String)session.getAttribute("nickname");
 		
 		LocalDate now = LocalDate.now();
 		int year = now.getYear();
 		int month = now.getMonthValue();	// 1~31
 		int day = now.getDayOfMonth();		// 1~12
 		int dow = now.getDayOfWeek().getValue();	// 월요일1, 화요일2~
-		
 	%>
 	<div class="info">
 		<div>
 			<p>회원정보</p>
-			<p><%= u_id %></p>
+			<p><%= u_nickname %></p>
 		</div>
 		<form method="post" action="LogoutSession.jsp">
 			<input type="submit" value="로그아웃">
