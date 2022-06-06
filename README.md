@@ -1,5 +1,11 @@
 # 20221-WebProgramming
 
+# 12주차
+![image](https://user-images.githubusercontent.com/95271528/172201130-005a40a2-3800-4cca-bcd0-627ac53e9dbc.png)
++ 데이터베이스 schedule 테이블 설계 수정
+  + 일정을 등록한 유저의 ID와 일정의 scheduleID을 primary key로 등록, scheduleID는 일정 등록 시 계산
++ 일정 내용을 입력하고 추가 버튼을 누르면 데이터베이스에 등록
+
 # 11주차
 ![image](https://user-images.githubusercontent.com/95271528/171370850-0dd2156a-2cda-4682-a1c9-8f395dc584d9.png)
 ![image](https://user-images.githubusercontent.com/95271528/171370872-f0362353-a042-499d-aa9b-6655fe091817.png)
@@ -11,8 +17,8 @@
 + 관리자 화면에서 회원 목록 열람, 회원 삭제 기능
 
 # 9주차
-![image](https://user-images.githubusercontent.com/95271528/168513182-e76f2ce3-f1fa-4523-934b-d37843b7cf0d.png)
-![image](https://user-images.githubusercontent.com/95271528/168513392-03f9c1e6-6307-4d1c-a59b-b70f04b494b5.png)
+![image](https://user-images.githubusercontent.com/95271528/172202985-0e7e5d05-8699-4a4a-ac55-6bf25e0adf3c.png)
+![image](https://user-images.githubusercontent.com/95271528/172201646-58bf2949-32a9-4f33-89e2-c8083a668c49.png)
 + DB 테이블 설계
 + DAO, VO 클래스 구현 중
 
