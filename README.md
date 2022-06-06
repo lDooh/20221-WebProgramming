@@ -20,7 +20,7 @@
 ![image](https://user-images.githubusercontent.com/95271528/172202985-0e7e5d05-8699-4a4a-ac55-6bf25e0adf3c.png)
 ![image](https://user-images.githubusercontent.com/95271528/172201646-58bf2949-32a9-4f33-89e2-c8083a668c49.png)
 + DB 테이블 설계
-+ DAO, VO 클래스 구현 중
++ DAO, DTO 클래스 구현 중
 
 # 8주차
 ![image](https://user-images.githubusercontent.com/95271528/167437723-99413cda-f5dd-4193-87b2-ad65972c73ca.png)
