@@ -16,7 +16,7 @@
 	</script>
 	<%
 		//response.sendRedirect("LoginPage.jsp");
-	out.print("<script>location.href='LoginPage.jsp';</script>");
+		out.print("<script>location.href='LoginPage.jsp';</script>");
 	%>
 </body>
 </html>

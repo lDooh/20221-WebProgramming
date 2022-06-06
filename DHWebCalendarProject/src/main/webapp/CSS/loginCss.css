@@ -29,15 +29,30 @@ div.info {
 
 div.cal {
 	border: 2px solid #FFFFAA;
-	width: 800px;
-	height: 500px;
+	width: 750px;
+	height: 600px;
 	position: relative;
-	top: 1px;
+	top: 0px;
 	left: 500px;
 }
 
 .calBorder {
 	border: 1px solid black;
+}
+
+td.cal {
+	width: 100px;
+	height: 70px;
+	font-size: 30px;
+	font-weight: bold;
+	text-align: center;
+}
+
+th.cal {
+	height: 50px;
+	font-size: 20px;
+	font-weight: bold;
+	text-align: center;
 }
 
 p.nick {

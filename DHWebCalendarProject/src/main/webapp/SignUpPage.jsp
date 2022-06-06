@@ -71,7 +71,7 @@
 	</script>
 </head>
 <body>
-	<form action="SignUpTest.jsp" method="post" name="loginForm" onsubmit="return checkSignUp()">
+	<form action="SignUpSession.jsp" method="post" name="loginForm" onsubmit="return checkSignUp()">
 	<fieldset class="fieldset_css">
 		<legend class="bold_font">회원 가입</legend>
 		ID<br>

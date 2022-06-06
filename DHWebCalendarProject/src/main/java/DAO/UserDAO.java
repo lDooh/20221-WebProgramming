@@ -82,12 +82,12 @@ public class UserDAO {
 		
 		try {
 			statement = connection.prepareStatement(sql);
-			statement.setString(1,  userDTO.getId());
-			statement.setString(2,  userDTO.getPassword());
-			statement.setString(3,  userDTO.getNickname());
-			statement.setString(4,  userDTO.getbd());
-			statement.setString(5,  userDTO.getGender());
-			statement.setString(6,  userDTO.getCallNum());
+			statement.setString(1, userDTO.getId());
+			statement.setString(2, userDTO.getPassword());
+			statement.setString(3, userDTO.getNickname());
+			statement.setString(4, userDTO.getbd());
+			statement.setString(5, userDTO.getGender());
+			statement.setString(6, userDTO.getCallNum());
 			
 			count = statement.executeUpdate();
 		} catch (SQLException e) {
@@ -250,15 +250,12 @@ public class UserDAO {
 		String sql = "UPDATE userinfo SET password = ?, nickname = ?, birthday = ?, manager = ? WHERE id = ?";
 		
 		connect();
-		String bd = userDTO.getbd().substring(0, 4) + "-"
-				+ userDTO.getbd().substring(4, 6) + "-"
-				+ userDTO.getbd().substring(6, 8) + "-";
 
 		try {
 			statement = connection.prepareStatement(sql);
 			statement.setString(1, userDTO.getPassword());
 			statement.setString(2, userDTO.getNickname());
-			statement.setString(3, bd);
+			statement.setString(3, userDTO.getbd());
 			statement.setBoolean(4, userDTO.getManager());
 			statement.setString(5, userDTO.getId());
 			

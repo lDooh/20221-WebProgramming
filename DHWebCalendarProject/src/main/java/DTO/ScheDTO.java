@@ -1,18 +1,24 @@
 package DTO;
 
-import java.time.LocalDate;
-
 public class ScheDTO {
 	private String id;
+	private int scheduleID;
 	private String title;
-	private LocalDate sDate;
-	private LocalDate eDate;
+	private String scheduleDate;		// yyyymmss 8자리 형식으로 저장
+	private String content;
 	
-	public ScheDTO(String id, String title, LocalDate sDate, LocalDate eDate) {
+	public ScheDTO(String id, int scheduleID, String title, String scheduleDate, String content) {
 		this.id = id;
+		this.scheduleID = scheduleID;
 		this.title = title;
-		this.sDate = sDate;
-		this.eDate = eDate;
+		if (scheduleDate.length() == 10)
+		{
+			String[] str = scheduleDate.split("-");
+			this.scheduleDate = str[0] + str[1] + str[2];
+		}
+		else
+			this.scheduleDate = scheduleDate;
+		this.content = content;
 	}
 	
 	public String getId() {
@@ -23,6 +29,14 @@ public class ScheDTO {
 		this.id = id;
 	}
 	
+	public int getScheduleID() {
+		return scheduleID;
+	}
+
+	public void setScheduleID(int scheduleID) {
+		this.scheduleID = scheduleID;
+	}
+	
 	public String getTitle() {
 		return title;
 	}
@@ -31,19 +45,25 @@ public class ScheDTO {
 		this.title = title;
 	}
 	
-	public LocalDate getSDate() {
-		return sDate;
+	public String getScheduleDate() {
+		return scheduleDate;
 	}
 	
-	public void setSDate(LocalDate sDate) {
-		this.sDate = sDate;
+	public void setScheduleDate(String scheduleDate) {
+		if (scheduleDate.length() == 10)
+		{
+			String[] str = scheduleDate.split("-");
+			this.scheduleDate = str[0] + str[1] + str[2];
+		}
+		else
+			this.scheduleDate = scheduleDate;
 	}
 	
-	public LocalDate getEDate() {
-		return eDate;
+	public String getContent() {
+		return content;
 	}
 	
-	public void setEDate(LocalDate eDate) {
-		this.eDate = eDate;
+	public void setContent(String content) {
+		this.content = content;
 	}
 }
