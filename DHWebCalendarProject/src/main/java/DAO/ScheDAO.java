@@ -5,6 +5,8 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 import DTO.ScheDTO;
+import DTO.UserDTO;
+
 import java.sql.*;
 
 public class ScheDAO {
@@ -74,16 +76,17 @@ public class ScheDAO {
 		}
 	}
 	
-	// scheduleID 반환
+	// max scheduleID 반환
 	public int getScheduleNumber(String id) {
-		String sql = "SELECT MAX(scheduleID) FROM schedule WHERE id = '" + id + "'";
+		String sql = "SELECT MAX(scheduleID) FROM schedule WHERE id = ?";
 		
 		connect();
 		String max = null;
 		
 		try {
 			statement = connection.prepareStatement(sql);
-			resultSet = statement.executeQuery(sql);
+			statement.setString(1, id);
+			resultSet = statement.executeQuery();
 			
 			if (resultSet.next())
 			{
@@ -132,21 +135,55 @@ public class ScheDAO {
 		return false;
 	}
 	
-	public ScheDTO[] getSchedule() {
-		String sql = "SELECT * FROM schedule ORDER BY scheduleID";
+	// 일정 반환
+	public ScheDTO getScheduleDTO(String id, String scheduleID) {
+		String sql = "SELECT * FROM schedule WHERE ID = ? AND scheduleID = ?";
+		ScheDTO scheDTO = null;
+		
+		connect();
+		
+		try {
+			statement = connection.prepareStatement(sql);
+			statement.setString(1, id);
+			statement.setString(2, scheduleID);
+			resultSet = statement.executeQuery();
+			resultSet.next();
+			
+			scheDTO = new ScheDTO(resultSet.getString("ID"),
+					resultSet.getInt("scheduleID"),
+					resultSet.getString("title"),
+					resultSet.getString("scheduleDate"),
+					resultSet.getString("content"));
+			
+			return scheDTO;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			connectionClose();
+		}
+		
+		return scheDTO;
+	}
+	
+	// 일정 목록 반환
+	public ScheDTO[] getSchedule(String id) {
+		String sql = "SELECT * FROM schedule WHERE ID = ? ORDER BY scheduleDate";
 		ScheDTO[] scheDTO = null;
 		
 		connect();
 		
 		try {
-			statement = connection.prepareStatement("SELECT count(scheduleID) FROM schedule;");
-			resultSet = statement.executeQuery("SELECT count(scheduleID) FROM schedule;");
+			statement = connection.prepareStatement("SELECT count(scheduleID) FROM schedule WHERE ID = ?");
+			statement.setString(1, id);
+			resultSet = statement.executeQuery();
 			resultSet.next();
 			int rows = Integer.parseInt(resultSet.getString("count(scheduleID)"));
 			scheDTO = new ScheDTO[rows];
 			
 			statement = connection.prepareStatement(sql);
-			resultSet = statement.executeQuery(sql);
+			statement.setString(1, id);
+			resultSet = statement.executeQuery();
 			
 			ScheDTO tmpscheDTO = null;
 			resultSet.next();
@@ -170,9 +207,10 @@ public class ScheDAO {
 		return scheDTO;
 	}
 	
-	public void modifySche(ScheDTO scheDTO) {
-		String sql = "UPDATE schedule SET title = ?, scheduleDate = ?, content = ?";
-		
+	// 일정 수정
+	public int modifySche(ScheDTO scheDTO) {
+		String sql = "UPDATE schedule SET title = ?, scheduleDate = ?, content = ? WHERE id = ? AND scheduleID = ?";
+		int count = 0;
 		connect();
 
 		try {
@@ -180,31 +218,39 @@ public class ScheDAO {
 			statement.setString(1, scheDTO.getTitle());
 			statement.setString(2, scheDTO.getScheduleDate());
 			statement.setString(3, scheDTO.getContent());
+			statement.setString(4, scheDTO.getId());
+			statement.setInt(5, scheDTO.getScheduleID());
 			
-			statement.executeUpdate();
+			count = statement.executeUpdate();
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			connectionClose();
 		}
+		
+		return count;
 	}
 	
-	public void deleteSche(String id, int scheduleID) {
+	// 일정 삭제
+	public int deleteSche(String id, String scheduleID) {
 		String sql = "DELETE FROM schedule WHERE id = ? AND scheduleID = ?";
+		int count = 0;
 		
 		connect();
 		
 		try {
 			statement = connection.prepareStatement(sql);
-			statement.setString(1,  id);
-			statement.setInt(2,  scheduleID);
-			statement.executeUpdate();
+			statement.setString(1, id);
+			statement.setString(2, scheduleID);
+			count = statement.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			connectionClose();
 		}
+		
+		return count;
 	}
 
 	public static void main(String[] args) {

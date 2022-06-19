@@ -1,12 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.time.LocalDate" %>
+<%@ page import="DAO.ScheDAO" %>
+<%@ page import="DTO.ScheDTO" %>
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="UTF-8">
 	<title>DH Calendar</title>
-	<link rel="stylesheet" href="/CSS/loginCss.css">
+	<link rel="stylesheet" href="./CSS/loginCss.css">
 </head>
 <body>
 	<%
@@ -21,6 +23,9 @@
 		int month = now.getMonthValue();	// 1~31
 		int day = now.getDayOfMonth();		// 1~12
 		int dow = now.getDayOfWeek().getValue();	// 월요일1, 화요일2~
+		
+		ScheDAO scheDAO = ScheDAO.getInstance();
+		ScheDTO[] scheDTO = scheDAO.getSchedule(id);
 	%>
 	<div class="info">
 		<div>
@@ -31,6 +36,33 @@
 			<input type="submit" value="로그아웃">
 		</form>
 	</div>
+	
+	<table border="1" class="schedule">
+		<tr>
+			<th>title</th>
+			<th>date</th>
+			<th width="300px">content</th>
+			<th>수정</th>
+			<th>삭제</th>
+		</tr>
+		<%
+			if (scheDTO != null)
+			{
+				for (int i = 0; i < scheDTO.length; i++)
+				{
+					out.print("<tr><td>");
+					out.print(scheDTO[i].getTitle() + "</td><td>"
+							+ scheDTO[i].getScheduleDate() + "</td><td>"
+							+ scheDTO[i].getContent() + "</td><td>"
+							// TODO: 일정 수정/삭제 페이지(세션) 구현
+							+ "<a href=ModifySchedule.jsp?modifyID=" + scheDTO[i].getScheduleID() + ">□</a></td><td>"
+							+ "<a href=DeleteSchedule.jsp?deleteID=" + scheDTO[i].getScheduleID() + ">X</a>");
+					out.print("</tr>");
+				}
+			}
+		%>
+	</table>
+	
 	<div class="cal">
 		<table class="calBorder">
 			<tr>

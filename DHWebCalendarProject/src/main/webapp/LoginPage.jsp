@@ -5,7 +5,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>DH Calendar</title>
-	<link rel="stylesheet" href="/CSS/loginCss.css">
+	<link rel="stylesheet" href="./CSS/loginCss.css">
 	<script type="text/javascript">
 		function checkSignIn() {
 			var f = document.login_form;

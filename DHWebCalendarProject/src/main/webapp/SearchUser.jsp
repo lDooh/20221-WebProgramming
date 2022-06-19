@@ -11,9 +11,23 @@
 <body>
 	<%
 		request.setCharacterEncoding("UTF-8");
-		String u_nick = request.getParameter("searchNick");
+		String searchKey = request.getParameter("searchNick");
+		String searchType = request.getParameter("searchType");
 		UserDAO userDAO = UserDAO.getInstance();
-		UserDTO[] userDTO = userDAO.getUsersByNick(u_nick);
+		UserDTO[] userDTO = null;
+		
+		if (searchType == null || searchType.equals("searchByID"))
+		{
+			userDTO = userDAO.getUsersByID(searchKey);
+		}
+		else if (searchType.equals("searchByNickname"))
+		{
+			userDTO = userDAO.getUsersByNick(searchKey);
+		}
+		else
+		{
+			userDTO = userDAO.getUsersByCallNum(searchKey);
+		}
 	%>
 	
 	

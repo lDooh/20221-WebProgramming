@@ -114,7 +114,7 @@ public class UserDAO {
 		
 		try {
 			statement = connection.prepareStatement(sql);
-			resultSet = statement.executeQuery(sql);
+			resultSet = statement.executeQuery();
 			
 			if (resultSet.next())
 			{
@@ -150,7 +150,7 @@ public class UserDAO {
 			userDTO = new UserDTO[rows];
 			
 			statement = connection.prepareStatement(sql);
-			resultSet = statement.executeQuery(sql);
+			resultSet = statement.executeQuery();
 			
 			UserDTO tmpUserDTO = null;
 			resultSet.next();
@@ -177,14 +177,15 @@ public class UserDAO {
 	}
 	
 	public UserDTO getUserDTO(String id) {
+		String sql = "SELECT * FROM userinfo WHERE id = ?";
 		UserDTO userDTO;
-		String sql = "SELECT * FROM userinfo WHERE id = '" + id + "'";
 		
 		connect();
 		
 		try {
 			statement = connection.prepareStatement(sql);
-			resultSet = statement.executeQuery(sql);
+			statement.setString(1, id);
+			resultSet = statement.executeQuery();
 			
 			resultSet.next();
 			userDTO = new UserDTO(resultSet.getString("id"),
@@ -205,21 +206,112 @@ public class UserDAO {
 		return null;
 	}
 	
-	public UserDTO[] getUsersByNick(String nick) {
-		String sql = "SELECT * FROM userinfo WHERE id LIKE '%" + nick + "%';";
+	public UserDTO[] getUsersByID(String id) {
+		String sql = "SELECT * FROM userinfo WHERE id LIKE ?";
 		UserDTO[] userDTO = null;
 		
 		connect();
 		
 		try {
-			statement = connection.prepareStatement("SELECT count(id) FROM userinfo WHERE id LIKE '%" + nick + "%';");
-			resultSet = statement.executeQuery("SELECT count(id) FROM userinfo WHERE id LIKE '%" + nick + "%';");
+			statement = connection.prepareStatement("SELECT count(id) FROM userinfo WHERE id LIKE ?");
+			statement.setString(1, "%" + id + "%");
+			resultSet = statement.executeQuery();
 			resultSet.next();
 			int rows = Integer.parseInt(resultSet.getString("count(id)"));
 			userDTO = new UserDTO[rows];
 			
 			statement = connection.prepareStatement(sql);
-			resultSet = statement.executeQuery(sql);
+			statement.setString(1, "%" + id + "%");
+			resultSet = statement.executeQuery();
+			
+			UserDTO tmpUserDTO = null;
+			resultSet.next();
+			for (int i = 0; i < rows; i++)
+			{
+				System.out.println(i);
+				tmpUserDTO = new UserDTO(resultSet.getString("id"),
+										resultSet.getString("password"),
+										resultSet.getString("nickname"),
+										resultSet.getString("birthday"),
+										resultSet.getString("gender"),
+										resultSet.getString("callNum"));
+				tmpUserDTO.setManager(resultSet.getBoolean("manager"));
+				userDTO[i] = tmpUserDTO;
+				resultSet.next();
+			}
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		} finally {
+			connectionClose();
+		}
+		
+		return userDTO;
+	}
+	
+	public UserDTO[] getUsersByNick(String nick) {
+		String sql = "SELECT * FROM userinfo WHERE nickname LIKE ?";
+		UserDTO[] userDTO = null;
+		
+		connect();
+		
+		try {
+			statement = connection.prepareStatement("SELECT count(id) FROM userinfo WHERE nickname LIKE ?");
+			statement.setString(1, "%" + nick + "%");
+			resultSet = statement.executeQuery();
+			resultSet.next();
+			int rows = Integer.parseInt(resultSet.getString("count(id)"));
+			userDTO = new UserDTO[rows];
+			
+			statement = connection.prepareStatement(sql);
+			statement.setString(1, "%" + nick + "%");
+			resultSet = statement.executeQuery();
+			
+			UserDTO tmpUserDTO = null;
+			
+			if (resultSet.next())
+			{
+				for (int i = 0; i < rows; i++)
+				{
+					System.out.println(i);
+					tmpUserDTO = new UserDTO(resultSet.getString("id"),	
+											resultSet.getString("password"),
+											resultSet.getString("nickname"),
+											resultSet.getString("birthday"),
+											resultSet.getString("gender"),
+											resultSet.getString("callNum"));
+					tmpUserDTO.setManager(resultSet.getBoolean("manager"));
+					userDTO[i] = tmpUserDTO;
+					resultSet.next();
+				}
+			}
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		} finally {
+			connectionClose();
+		}
+		
+		return userDTO;
+	}
+	
+	public UserDTO[] getUsersByCallNum(String callNum) {
+		String sql = "SELECT * FROM userinfo WHERE callNum LIKE ?";
+		UserDTO[] userDTO = null;
+		
+		connect();
+		
+		try {
+			statement = connection.prepareStatement("SELECT count(id) FROM userinfo WHERE callNum LIKE ?");
+			statement.setString(1, "%" + callNum + "%");
+			resultSet = statement.executeQuery();
+			resultSet.next();
+			int rows = Integer.parseInt(resultSet.getString("count(id)"));
+			userDTO = new UserDTO[rows];
+			
+			statement = connection.prepareStatement(sql);
+			statement.setString(1, "%" + callNum + "%");
+			resultSet = statement.executeQuery();
 			
 			UserDTO tmpUserDTO = null;
 			resultSet.next();
