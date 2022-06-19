@@ -1,5 +1,15 @@
 # 20221-WebProgramming
 
+# 14주차
+![image](https://user-images.githubusercontent.com/95271528/174494330-bf10e21a-098a-4571-9928-bbeef68b21f5.png)
++ 메인 화면에서 자신이 저장한 일정 목록 열람, 수정, 
+
+# 13주차
+![image](https://user-images.githubusercontent.com/95271528/174494294-8ba6605e-09bf-4523-879b-9e2c405de746.png)
++ 관리자 메뉴 수정
+  + 회원 목록 5명씩 표시하도록 페이징
+  + ID, 닉네임, 전화번호로 회원 목록 검색 가능
+
 # 12주차
 ![image](https://user-images.githubusercontent.com/95271528/172201130-005a40a2-3800-4cca-bcd0-627ac53e9dbc.png)
 + 데이터베이스 schedule 테이블 설계 수정
@@ -17,8 +27,8 @@
 + 관리자 화면에서 회원 목록 열람, 회원 삭제 기능
 
 # 9주차
-![image](https://user-images.githubusercontent.com/95271528/172202985-0e7e5d05-8699-4a4a-ac55-6bf25e0adf3c.png)
-![image](https://user-images.githubusercontent.com/95271528/172201646-58bf2949-32a9-4f33-89e2-c8083a668c49.png)
+![image](https://user-images.githubusercontent.com/95271528/174494237-e112542e-5c47-4b85-a50f-80a4bf373c75.png)
+![image](https://user-images.githubusercontent.com/95271528/174494247-a3b07180-255c-44ec-9d3c-fb61d507067d.png)
 + DB 테이블 설계
 + DAO, DTO 클래스 구현 중
 
@@ -74,7 +84,6 @@
 | 일정 수정 | 일정이 있는 날을 선택하고, 일정 내용 수정 | U |
 | 일정 삭제 | 일정이 있는 날을 선택하고, 일정 삭제 | D |
 | 회원 가입 | 회원별로 일정을 저장 | DB 사용 |
-| 친구 추가 | 친구로 등록된 사용자끼리 일정 공유 | |
 
 ## 개발 환경
 + 운영체제: Windows 10
